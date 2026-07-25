@@ -1,0 +1,58 @@
+name: Build patches only
+
+on:
+  workflow_dispatch:
+    inputs:
+      enable_youpip:
+        description: "Compilar YouPiP"
+        type: boolean
+        required: true
+        default: true
+
+      enable_ytuhd:
+        description: "Compilar YTUHD"
+        type: boolean
+        required: true
+        default: true
+
+      enable_yq:
+        description: "Compilar YouQuality"
+        type: boolean
+        required: true
+        default: true
+
+      enable_ryd:
+        description: "Compilar Return YouTube Dislikes"
+        type: boolean
+        required: true
+        default: true
+
+      enable_ytabc:
+        description: "Compilar YTABConfig"
+        type: boolean
+        required: true
+        default: true
+
+      enable_demc:
+        description: "Compilar DontEatMyContent"
+        type: boolean
+        required: true
+        default: true
+
+      tweak_version:
+        description: "Versión de YouTube Plus"
+        type: string
+        required: true
+        default: "5.2.2"
+
+jobs:
+  build-patches:
+    uses: ./.github/workflows/_build_tweaks.yml
+    with:
+      enable_youpip: ${{ inputs.enable_youpip }}
+      enable_ytuhd: ${{ inputs.enable_ytuhd }}
+      enable_yq: ${{ inputs.enable_yq }}
+      enable_ryd: ${{ inputs.enable_ryd }}
+      enable_ytabc: ${{ inputs.enable_ytabc }}
+      enable_demc: ${{ inputs.enable_demc }}
+      tweak_version: ${{ inputs.tweak_version }}
